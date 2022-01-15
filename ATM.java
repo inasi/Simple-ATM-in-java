@@ -7,7 +7,7 @@ public class ATM {
 	public static void main(String[] args) {
 		
 		while (true) {
-		int correctPin = 1234;    // example pin
+		String correctPin = "1234";    // example pin
 		int currentBalance = 2000;
 		
 		@SuppressWarnings("resource")
@@ -15,26 +15,27 @@ public class ATM {
 		
 		System.out.println("Please enter your card and pin.");
 		
-		int enteredPin = input.nextInt();
+		String enteredPin = input.nextLine();
 		
 		//if enteredPin matches expected pin
-		if (enteredPin == correctPin) {
+		if (enteredPin.equals(correctPin)) {
 			
 			//ask user for which option they want to use
 			System.out.println("Please press 1 to Deposit, 2 to withdraw, 3 for current balance, 4 to exit");
 			
-			int selectedOption = input.nextInt();
+			String selectedOption = input.nextLine();
 			
 			// user chooses to deposit
-			if (selectedOption == 1) {
+			if (selectedOption.equals("1")) {
 				System.out.println("Choose amount to deposit");
 				
 				while (true) {
+					
 				int amountDeposited = input.nextInt();
 				    
 					if (amountDeposited >0) {
 						currentBalance = currentBalance + amountDeposited;
-							System.out.println("Deposit accepted. Current balance is " + currentBalance +". Thank you for using the ATM.");
+							System.out.println("Deposit of " + amountDeposited + " accepted. Current balance is " + currentBalance +". Thank you for using the ATM.");
 							
 					}
 					
@@ -45,13 +46,13 @@ public class ATM {
 			}
 			
 			//user chooses withdrawal option
-			else if (selectedOption == 2) {
+			else if (selectedOption.equals("2")) {
 				
 				System.out.println("Please enter amount to withdraw");
 				
 				int amounttoWithdraw = input.nextInt();
-				
-					if (amounttoWithdraw > currentBalance && amounttoWithdraw >0) {
+				  
+					if (amounttoWithdraw> currentBalance && amounttoWithdraw >0) {
 						System.out.println ("Withdrawal amount is higher than account balance. Please enter an amount below "+ currentBalance);
 					}
 					
@@ -66,12 +67,12 @@ public class ATM {
 			}
 			
 			//user wants to see current balance only
-			else if (selectedOption == 3) {
+			else if (selectedOption.equals("3")) {
 				System.out.println("Current Balance is "+ currentBalance);
 			}
 			
 			//user wants to exit without performing any transactions
-			else if (selectedOption == 4) {
+			else if (selectedOption.equals("4")) {
 				System.out.println ("Please remove card.");
 			}
 			
@@ -84,7 +85,7 @@ public class ATM {
 		}
 		else {
 			System.out.println("Incorrect pin entered.");
-			}
-	}
+		}
+		}
 }
 }
